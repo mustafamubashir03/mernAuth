@@ -14,7 +14,11 @@ mongoose
 
 app.use("/api/user", userRoute);
 app.use("/api/auth/signup",authRoute);
-
+app.use((err,req,res,next) => {
+  const errorStatus = err.status || 500;
+  const message = err.message || "Internal server error";
+  res.status(errorStatus).json({success:false,message,errorStatus})
+})
 app.listen(3000, () => {
   console.log("App has been started");
 });
