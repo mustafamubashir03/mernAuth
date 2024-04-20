@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import userRoute from "./routes/user.router.js";
 import authRoute from "./routes/auth.router.js";
 const app = express();
+import cors from 'cors';
+app.use(cors());
 dotenv.config();
 app.use(express.json());
 
